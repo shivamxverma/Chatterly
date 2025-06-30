@@ -2,12 +2,10 @@ import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import dotenv from 'dotenv'
 dotenv.config();
-
 interface AuthUser {
   id: string;
   username?: string;
   email?: string;
-  // Add other fields as needed
 }
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
@@ -25,7 +23,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   jwt.verify(token, jwtSecret, (err, user) => {
     if (err)
       return res.status(401).json({ status: 401, message: "UnAuthorized" });
-    req.user = user as AuthUser;
+    (req as any).user = user as AuthUser;
     next();
   });
 };

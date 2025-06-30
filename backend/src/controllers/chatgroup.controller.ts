@@ -1,10 +1,19 @@
 import { Request, Response } from "express";
 import prisma from "../config/db.config.js";
 
+// Extend Express Request interface to include 'user'
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any; // Replace 'any' with your actual user type if available
+    }
+  }
+}
+
 class ChatGroupController {
   static async index(req: Request, res: Response) {
     try {
-      const user = req.user;
+      const user = req?.user;
       const groups = await prisma.chatGroup.findMany({
         where: {
           user_id: user.id,
