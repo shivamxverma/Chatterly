@@ -4,6 +4,7 @@
 Chatterly is a scalable, real-time chat application built with modern technologies including Socket.io, Kafka, Redis, Postgres, and Next.js. This project demonstrates a robust architecture for handling multiple users with efficient message brokering and data storage.
 
 ## Features
+
 - Real-time messaging with Socket.io
 - Scalable message brokering using Kafka
 - Efficient caching with Redis
@@ -11,6 +12,7 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 - Frontend built with Next.js and TypeScript
 
 ## Prerequisites
+
 - Node.js (v22 or higher)
 - PostgreSQL
 - Redis
@@ -18,6 +20,7 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 - Yarn or npm
 
 ## Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/shivamxverma/chatterly.git
@@ -48,6 +51,7 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 5. Start the Kafka server and ensure Redis and Postgres are running.
 
 ## Running the Application
+
 1. Start the development server:
    ```bash
    yarn dev
@@ -58,6 +62,7 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 2. Open your browser and navigate to `http://localhost:3000`.
 
 ## Technologies Used
+
 - **Next.js**: React framework for server-side rendering and static site generation
 - **TypeScript**: Type-safe JavaScript
 - **Socket.io**: Real-time bidirectional communication
@@ -65,11 +70,4 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 - **Redis**: In-memory caching
 - **Postgres**: Relational database for persistent storage
 - **Prisma**: ORM for database management
-
-## Contributing
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m "Add your feature"`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
-
+```
