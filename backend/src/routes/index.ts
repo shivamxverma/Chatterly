@@ -1,10 +1,10 @@
 import { Router } from "express";
 const router = Router();
 import AuthController from "../controllers/auth.controller.js";
-import ChatGroupController from "../controllers/ChatGroupController.js";
-import authMiddleware from "../middleware/AuthMiddleware.js";
-import ChatGroupUserController from "../controllers/ChatGroupUserController.js";
-import ChatsController from "../controllers/ChatsController.js";
+import ChatGroupController from "../controllers/chatgroup.controller.js";
+import authMiddleware from "../middleware/auth.middleware.js";
+import ChatGroupUserController from "../controllers/chatgropuser.controller.js";
+import ChatsController from "../controllers/chats.controller.js";
 
 // Auth Routes
 router.post("/auth/login", AuthController.login);

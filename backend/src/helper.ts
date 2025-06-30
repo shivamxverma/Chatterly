@@ -14,7 +14,7 @@ export const consumeMessages = async (topic: string) => {
 
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
-      const data = JSON.parse(message.value.toString());
+      const data = JSON.parse(message.value?.toString() ?? '{}');
       console.log({
         partition,
         offset: message.offset,

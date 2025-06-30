@@ -16,7 +16,11 @@ export function setupSocket(io: Server) {
 
   io.on("connection", (socket: CustomSocket) => {
     // * Join the room
-    socket.join(socket.room);
+    if (socket.room) {
+      socket.join(socket.room);
+    } else {
+      console.error("socket.room is undefined for socket:", socket.id);
+    }
 
     socket.on("message", async (data) => {
       try {
@@ -24,7 +28,11 @@ export function setupSocket(io: Server) {
       } catch (error) {
         console.log("The kafka produce error is", error);
       }
-      socket.to(socket.room).emit("message", data);
+      if (socket.room) {
+        socket.to(socket.room).emit("message", data);
+      } else {
+        console.error("Cannot emit message, socket.room is undefined for socket:", socket.id);
+      }
     });
 
     socket.on("disconnect", () => {

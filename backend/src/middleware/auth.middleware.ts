@@ -3,6 +3,13 @@ import { Request, Response, NextFunction } from "express";
 import dotenv from 'dotenv'
 dotenv.config();
 
+interface AuthUser {
+  id: string;
+  username?: string;
+  email?: string;
+  // Add other fields as needed
+}
+
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (authHeader === null || authHeader === undefined) {
