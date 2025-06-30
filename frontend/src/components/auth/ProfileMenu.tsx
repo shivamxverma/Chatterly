@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import UserAvatar from "../common/UserAvatar";
 import dynamic from "next/dynamic";
-const LogoutModal = dynamic(() => import("../auth/LogoutModal"));
+const LogoutModal = dynamic(() => import("../auth/LogoutModel"));
 
 export default function ProfileMenu({
   image,

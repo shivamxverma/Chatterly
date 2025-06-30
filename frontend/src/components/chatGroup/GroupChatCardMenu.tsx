@@ -9,7 +9,7 @@ import {
 import { DotsVerticalIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import { CustomUser } from "@/app/api/auth/[...nextauth]/options";
-import EditGroupChat from "./EditGroupChat";
+import EditGroupChat from "./EditChatGroup";
 import { toast } from "sonner";
 import Env from "@/lib/env";
 const DeleteChatGroup = dynamic(() => import("./DeleteChatGroup"));

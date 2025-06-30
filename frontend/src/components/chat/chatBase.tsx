@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect, useMemo, Fragment } from "react";
-import ChatNav from "./ChatNav";
-import ChatUserDialog from "./ChatUserDialog";
-import ChatSidebar from "./ChatSidebar";
-import Chats from "./Chats";
+import ChatNav from "./chatNav";
+import ChatUserDialog from "./chatUserDialog";
+import ChatSidebar from "./chatSidebar";
+import Chats from "./chats";
 
 export default function ChatBase({
   group,

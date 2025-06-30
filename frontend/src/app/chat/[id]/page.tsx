@@ -1,4 +1,4 @@
-import ChatBase from "@/components/chat/ChatBase";
+import ChatBase from "@/components/chat/chatBase";
 import { fetchChats } from "@/fetch/chatsFetch";
 
 import { fetchChatGroup, fetchChatGroupUsers } from "@/fetch/groupFetch";
