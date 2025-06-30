@@ -1,4 +1,3 @@
-```markdown
 # Chatterly
 
 Chatterly is a scalable, real-time chat application built with modern technologies including Socket.io, Kafka, Redis, Postgres, and Next.js. This project demonstrates a robust architecture for handling multiple users with efficient message brokering and data storage.
@@ -70,4 +69,21 @@ Chatterly is a scalable, real-time chat application built with modern technologi
 - **Redis**: In-memory caching
 - **Postgres**: Relational database for persistent storage
 - **Prisma**: ORM for database management
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Commit your changes (`git commit -m "Add your feature"`).
+4. Push to the branch (`git push origin feature/your-feature`).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- Inspired by modern chat applications
+- Built with guidance from web development tutorials and best practices
 ```
