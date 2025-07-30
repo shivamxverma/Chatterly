@@ -11,7 +11,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "QuickChat",
+  title: "Chatterly",
   description: "Quick Chat App",
 };
 

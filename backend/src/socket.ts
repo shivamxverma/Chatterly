@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import { produceMessage } from "./helper.js";
+// import { produceMessage } from "./helper.js";
 
 interface CustomSocket extends Socket {
   room?: string;
@@ -23,11 +23,11 @@ export function setupSocket(io: Server) {
     }
 
     socket.on("message", async (data) => {
-      try {
-        await produceMessage("chats", data);
-      } catch (error) {
-        console.log("The kafka produce error is", error);
-      }
+      // try {
+      //   await produceMessage("chats", data);
+      // } catch (error) {
+      //   console.log("The kafka produce error is", error);
+      // }
       if (socket.room) {
         socket.to(socket.room).emit("message", data);
       } else {

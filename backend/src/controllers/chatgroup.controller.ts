@@ -5,7 +5,7 @@ import prisma from "../config/db.config.js";
 declare global {
   namespace Express {
     interface Request {
-      user?: any; // Replace 'any' with your actual user type if available
+      user?: AuthUser; // Use the same type as declared in custom-types.d.ts
     }
   }
 }
@@ -14,6 +14,9 @@ class ChatGroupController {
   static async index(req: Request, res: Response) {
     try {
       const user = req?.user;
+      if (!user) {
+        return res.status(401).json({ message: "Unauthorized: user not found" });
+      }
       const groups = await prisma.chatGroup.findMany({
         where: {
           user_id: user.id,
@@ -54,6 +57,9 @@ class ChatGroupController {
     try {
       const body = req.body;
       const user = req.user;
+      if (!user) {
+        return res.status(401).json({ message: "Unauthorized: user not found" });
+      }
       await prisma.chatGroup.create({
         data: {
           title: body?.title,
