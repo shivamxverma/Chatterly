@@ -1,51 +1,44 @@
-import express, { Application, Request, Response } from "express";
-import "dotenv/config";
+import express, { Application } from "express";
 import cors from "cors";
-const app: Application = express();
-const PORT = process.env.PORT || 8000;
-import Routes from "./routes/index.js";
-import { Server } from "socket.io";
 import { createServer } from "http";
-import { setupSocket } from "./socket.js";
+import { Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-streams-adapter";
 import redis from "./config/redis.js";
-import { instrument } from "@socket.io/admin-ui";
-// import { connectKafkaProducer } from "./config/kafka.config.js";
-import { consumeMessages } from "./helper.js";
+import Routes from "./routes/index.js";
+import { setupSocket } from "./socket.js";
 
-const server = createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: ["https://admin.socket.io"],
-  },
-  adapter: createAdapter(redis),
-});
+const app: Application = express();
 
-instrument(io, {
-  auth: false,
-  mode: "development",
-});
+// 1) Express CORS for your REST endpoints
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
-export { io };
-setupSocket(io);
-
-// * Middleware
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-app.get("/", (req: Request, res: Response) => {
-  return res.send("It's working Guys 🙌");
-});
-
-// * Add Kafka Producer
-// connectKafkaProducer().catch((err) => console.log("Kafka Consumer error", err));
-
-// consumeMessages(process.env.KAFKA_TOPIC!).catch((err) =>
-//   console.log("The Kafka Consume error", err)
-// );
-
-// * Routes
 app.use("/api", Routes);
 
-server.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
+const server = createServer(app);
+
+// 2) Socket.IO CORS must match/cover the same
+const io = new Server(server, {
+  cors: {
+    origin: ["http://localhost:3000", "https://admin.socket.io"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    credentials: true,
+  },
+  adapter: createAdapter(redis),
+  // transports: ["websocket"], // optional
+});
+
+setupSocket(io);
+
+const PORT = process.env.PORT ?? 8000;
+server.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}`);
+});
