@@ -9,7 +9,6 @@ import { setupSocket } from "./socket.js";
 
 const app: Application = express();
 
-// 1) Express CORS for your REST endpoints
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -25,7 +24,6 @@ app.use("/api", Routes);
 
 const server = createServer(app);
 
-// 2) Socket.IO CORS must match/cover the same
 const io = new Server(server, {
   cors: {
     origin: ["http://localhost:3000", "https://admin.socket.io"],
@@ -33,7 +31,6 @@ const io = new Server(server, {
     credentials: true,
   },
   adapter: createAdapter(redis),
-  // transports: ["websocket"], // optional
 });
 
 setupSocket(io);

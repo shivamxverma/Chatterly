@@ -40,5 +40,12 @@
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",
     "typescript": "^5"
+  },
+    "eslintConfig": {
+    "extends": ["next", "next/core-web-vitals"],
+    "rules": {
+      "@next/next/no-img-element": "off",
+      "react/no-unescaped-entities": "off"
+    }
   }
 }
