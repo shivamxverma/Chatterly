@@ -1,22 +1,26 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { Button } from "@/components/ui/button";
 
-export default async function AuthError({
-  searchParams,
-}: {
+interface PageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const params = await searchParams;
-  const raw = params.message;
-  const message = Array.isArray(raw) ? raw[0] : raw;
+}
+
+export default async function AuthError({ searchParams }: PageProps) {
+  const { message } = await searchParams;
+  const text = Array.isArray(message) ? message[0] : message ?? "";
 
   return (
-    <div className="h-screen flex justify-center items-center flex-col">
-      <Image src="/images/error.svg" width={500} height={500} alt="error" />
-      <p className="text-xl">{message ?? ""}</p>
-      <Link href="/">
+    <div className="h-screen flex flex-col items-center justify-center gap-6">
+      <Image
+        src="/images/error.svg"
+        width={500}
+        height={500}
+        alt="Authentication error illustration"
+        priority
+      />
+      <p className="text-xl text-red-600">{text}</p>
+      <Link href="/" prefetch={false}>
         <Button>Back to home</Button>
       </Link>
     </div>
