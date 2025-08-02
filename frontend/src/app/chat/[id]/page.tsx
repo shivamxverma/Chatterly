@@ -1,25 +1,26 @@
 import ChatBase from "@/components/chat/chatBase";
 import { fetchChats } from "@/fetch/chatsFetch";
-
 import { fetchChatGroup, fetchChatGroupUsers } from "@/fetch/groupFetch";
 import { notFound } from "next/navigation";
-import React from "react";
 
-export default async function chat({ params }: { params: { id: string } }) {
-  if (params.id.length !== 36) {
-    return notFound();
-  }
-  const chatGroup: GroupChatType | null = await fetchChatGroup(params.id);
-  if (chatGroup === null) {
-    return notFound();
-  }
-  const chatGroupUsers: Array<GroupChatUserType> | [] =
-    await fetchChatGroupUsers(params?.id);
-  const chats: Array<MessageType> | [] = await fetchChats(params.id);
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function Chat({ params }: PageProps) {
+  const { id } = await params;
+
+  if (id.length !== 36) return notFound();
+
+  const chatGroup = await fetchChatGroup(id);
+  if (!chatGroup) return notFound();
+
+  const [chatGroupUsers, chats] = await Promise.all([
+    fetchChatGroupUsers(id),
+    fetchChats(id),
+  ]);
 
   return (
-    <div>
-      <ChatBase group={chatGroup} users={chatGroupUsers} oldMessages={chats} />
-    </div>
+    <ChatBase group={chatGroup} users={chatGroupUsers} oldMessages={chats} />
   );
 }
