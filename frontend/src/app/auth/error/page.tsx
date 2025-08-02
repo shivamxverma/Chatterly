@@ -3,15 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function authError({
+export default async function AuthError({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  const params = await searchParams;
+  const raw = params.message;
+  const message = Array.isArray(raw) ? raw[0] : raw;
+
   return (
     <div className="h-screen flex justify-center items-center flex-col">
       <Image src="/images/error.svg" width={500} height={500} alt="error" />
-      <p className="text-xl">{searchParams["message"] ?? ""}</p>
+      <p className="text-xl">{message ?? ""}</p>
       <Link href="/">
         <Button>Back to home</Button>
       </Link>
