@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
+// Error Page
+
 export default function NotFound() {
   return (
     <div className="flex justify-center items-center flex-col h-screen">
