@@ -11,8 +11,8 @@
     "clean": "rimraf dist",
     "generate": "prisma generate",
     "build": "npm run clean && npm run generate && tsc",
-    "start": "NODE_ENV=production node dist/index.js",
-    "worker": "NODE_ENV=production node dist/worker.js",
+    "start": "node dist/index.js",
+    "worker": "node dist/worker.js",
     "serve": "npm run build && concurrently -k \"npm run start\" \"npm run worker\"",
     "dev": "concurrently -k \"nodemon --watch src --ext ts --exec ts-node src/index.ts\" \"nodemon --watch src --ext ts --exec ts-node src/worker.ts\"",
     "watch": "tsc -w"
