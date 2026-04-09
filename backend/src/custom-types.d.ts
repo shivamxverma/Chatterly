@@ -12,3 +12,5 @@ declare namespace Express {
     user?: AuthUser; // Optional user property
   }
 }
+
+declare module "winston-daily-rotate-file";
