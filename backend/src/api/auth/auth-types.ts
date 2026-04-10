@@ -4,6 +4,31 @@ export interface EmailPasswordRegisterRequest {
     displayName?: string;
 }
 
+export interface GoogleAuthResponse {
+    isNewUser: boolean;
+    userId: string;
+    accessToken?: string;
+    refreshToken?: string;
+}
+  
+export interface RefreshTokenResponse {
+accessToken: string;
+refreshToken: string;
+}
+
+
+export interface EmailPasswordLoginRequest {
+    email: string;
+    password: string;
+}
+
+export interface EmailPasswordAuthResponse {
+    isNewUser: boolean;
+    userId: string;
+    accessToken: string;
+    refreshToken: string;
+}
+
 
 
 export interface RegisterResponse {

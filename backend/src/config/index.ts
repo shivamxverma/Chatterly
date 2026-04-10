@@ -42,7 +42,10 @@ const envSchema = yup.object().shape({
     EMAIL_PASS: yup.string().required(),
     EMAIL_PORT: yup.number().required(),
     EMAIL_USER: yup.string().required(),
-    SMTP_VERIFY_URL : yup.string().required()
+    SMTP_VERIFY_URL : yup.string().required(),
+    JWT_SECRET : yup.string().required(),
+    JWT_REFRESH_SECRET : yup.string().required(),
+    GOOGLE_REDIRECT_URI : yup.string().required()
 })
 
 const parsedEnv = envSchema.validateSync(process.env, {

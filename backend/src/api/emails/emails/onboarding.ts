@@ -8,7 +8,7 @@ export const sendOnboardingWelcomeEmail = async (
     email: string,
     user: { name: string; heroImageUrl?: string }
 ) => {
-    const subject = 'Welcome to CodeSM — your account is ready';
+    const subject = 'Welcome to Chatterly — your account is ready';
     const avatarBlock = user.heroImageUrl
         ? `<p style="margin: 0 0 24px 0;"><img src="${user.heroImageUrl}" alt="" width="64" height="64" style="border-radius: 50%; display: block; border: 2px solid #e4e4e7;"></p>`
         : '';
@@ -19,7 +19,7 @@ export const sendOnboardingWelcomeEmail = async (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to CodeSM</title>
+    <title>Welcome to Chatterly</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f4f5; color: #18181b;">
     <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); border: 1px solid #e4e4e7;">
@@ -93,15 +93,15 @@ export const sendOnboardingWelcomeEmail = async (
                 </p>
                 <p style="line-height: 1.6; margin-top: 16px; margin-bottom: 0; color: #3f3f46; font-size: 16px;">
                     Cheers,<br>
-                    <strong>The CodeSM Team</strong>
+                    <strong>The Chatterly Team</strong>
                 </p>
             </div>
         </div>
 
         <div style="background-color: #f9fafb; padding: 24px; text-align: center; font-size: 12px; color: #71717a; border-top: 1px solid #e4e4e7;">
-            <p style="margin-bottom: 8px;">You received this because you verified your email on CodeSM.</p>
+            <p style="margin-bottom: 8px;">You received this because you verified your email on Chatterly.</p>
             <p style="margin-top: 16px;">
-                &copy; ${new Date().getFullYear()} CodeSM. All rights reserved.
+                &copy; ${new Date().getFullYear()} Chatterly. All rights reserved.
             </p>
         </div>
     </div>
@@ -112,9 +112,9 @@ export const sendOnboardingWelcomeEmail = async (
     return sendEmail({
         to: email,
         subject,
-        text: `Welcome to CodeSM, ${user.name}! Your email is verified. Open ${baseUrl}/ to get started.`,
+        text: `Welcome to Chatterly, ${user.name}! Your email is verified. Open ${baseUrl}/ to get started.`,
         html,
-        senderName: 'CodeSM',
+        senderName: 'Chatterly',
         senderEmail: env.EMAIL_USER!,
     });
 };
