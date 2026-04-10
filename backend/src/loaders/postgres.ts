@@ -1,5 +1,5 @@
-import * as schema from '../drizzle/schema';
-import * as relations from '../drizzle/relations';
+import * as schema from '../db/schema';
+import * as relations from '../db/relations';
 import logger from './logger';
 import env from '../config/index';
 import { Pool } from 'pg';

@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import { pushMessage, getHistory } from "./lib/redis.js";
+import { pushMessage, getHistory } from "../shared/redis";
 
 type Msg = { name: string; message?: string; file?: string };
 

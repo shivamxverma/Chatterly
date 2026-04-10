@@ -21,7 +21,8 @@
     "jsx": "react"
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./drizzle.config.ts"
   ],
   "exclude": [
     "node_modules",
