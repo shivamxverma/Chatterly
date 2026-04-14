@@ -40,6 +40,10 @@ export default function Chats({
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
+    if(message.length === 0){
+      return ;
+    }
+
     const payload: MessageType = {
       id: uuidv4(),
       message: message,

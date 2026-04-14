@@ -21,11 +21,15 @@ export function setupSocket(io: Server) {
   });
 
   io.on("connection", async (socket) => {
+    console.log("Connection is established with socket", socket);
+
     const room = (socket.data.room as string) || "lobby";
+    console.log("in a room", room);
     await socket.join(room);
 
     try {
       const history = await getHistory(room, 30);
+      console.log("History message", history);
       socket.emit("history", history || []);
     } catch {
       socket.emit("history", []);
