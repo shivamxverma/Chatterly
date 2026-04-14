@@ -1,7 +1,7 @@
 import { Account, AuthOptions, ISODateString, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
-import axios, {AxiosError} from "axios";
+import axios from "axios";
 import { LOGIN_URL } from "@/lib/apiAuthRoutes";
 import { redirect } from "next/navigation";
 
@@ -43,7 +43,7 @@ export const authOptions: AuthOptions = {
         user.token = data?.user?.token;
         return true;
       } catch (error) {
-        if (error instanceof AxiosError) {
+        if (axios.isAxiosError(error)) {
           return redirect(`/auth/error?message=${error.message}`);
         }
         return redirect(
