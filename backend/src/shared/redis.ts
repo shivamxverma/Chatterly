@@ -1,4 +1,4 @@
-import redis from "../config/redis.js";
+import redis from "../loaders/redis";
 
 function toJson(msg: unknown) {
   return JSON.stringify(msg);

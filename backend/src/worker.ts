@@ -1,5 +1,5 @@
-import redis from "./config/redis.js";
-import prisma from "./config/db.config.js";
+import redis from "./loaders/redis.js";
+// import prisma from "./config/db.config.js";
 
 async function flushPending(room: string) {
   const pendingKey = `chat:${room}:pending`;

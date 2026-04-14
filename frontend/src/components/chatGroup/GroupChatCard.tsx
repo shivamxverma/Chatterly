@@ -20,7 +20,7 @@ export default function GroupChatCard({
         <p>
           Passcode :-<strong>{group.passcode}</strong>
         </p>
-        <p>Created At :-{new Date(group.created_at).toDateString()}</p>
+        <p>Created At :-{new Date(group.createdAt).toDateString()}</p>
       </CardContent>
     </Card>
   );
