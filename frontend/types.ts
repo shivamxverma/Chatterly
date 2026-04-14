@@ -1,9 +1,9 @@
 type GroupChatType = {
   id: string;
-  user_id: number;
+  userId: string;
   title: string;
-  passcode: string;
-  created_at: string;
+  passcode: string | null;
+  createdAt: string;
 };
 
 type GroupChatUserType = {
