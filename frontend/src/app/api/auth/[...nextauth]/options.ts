@@ -5,6 +5,13 @@ import axios from "axios";
 import { LOGIN_URL } from "@/lib/apiAuthRoutes";
 import { redirect } from "next/navigation";
 
+type LoginResponse = {
+  user: {
+    id: string | number;
+    token: string;
+  };
+};
+
 export interface CustomSession {
   user?: CustomUser;
   expires: ISODateString;
@@ -37,8 +44,7 @@ export const authOptions: AuthOptions = {
           provider: account?.provider!,
           image: user?.image,
         };
-        const { data } = await axios.post(LOGIN_URL, payload);
-
+        const { data } = await axios.post<LoginResponse>(LOGIN_URL, payload);
         user.id = data?.user?.id?.toString();
         user.token = data?.user?.token;
         return true;
