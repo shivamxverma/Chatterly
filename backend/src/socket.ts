@@ -29,7 +29,7 @@ export function setupSocket(io: Server) {
 
     try {
       const history = await getHistory(room, 30);
-      console.log("History message", history);
+      // console.log("History message", history);
       socket.emit("history", history || []);
     } catch {
       socket.emit("history", []);
